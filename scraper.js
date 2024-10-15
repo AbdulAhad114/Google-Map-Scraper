@@ -14,48 +14,27 @@ const scrapeGoogleMapsData = async (searchQuery) => {
     await page.waitForSelector(resultsContainerSelector, { timeout: 10000 });
 
     const businessUrls = new Set();
-    // const scrollAndCollect = async () => {
-    //     let prevHeight = -1;
-    //     const maxScrolls = 100;
-    //     let scrollCount = 0;
-    //     const resultsContainer = await page.$(resultsContainerSelector);
-        
-    //     while (scrollCount < maxScrolls) {
-    //         // Scroll to the bottom of the page
-    //         await resultsContainer.evaluate(container => {
-    //             container.scrollTo(0, container.scrollHeight);
-    //         });
-
-    //         const newUrls = await page.evaluate(() => {
-    //             return Array.from(document.querySelectorAll('a[href^="https://www.google.com/maps/place"]')).map(anchor => anchor.href);
-    //         });
-
-    //         // Add new URLs to the set
-    //         newUrls.forEach(url => businessUrls.add(url));
-    //         console.log(`Collected ${newUrls.length} new URLs, total: ${businessUrls.size}`);
-
-    //         if (newUrls.length === 0) {
-    //             break;
-    //         }
-    //         prevHeight = await resultsContainer.evaluate(container => container.scrollHeight);
-    //         scrollCount += 1;
-    //     }
-    // };
+    
     const scrollAndCollect = async () => {
         let prevHeight = -1;
         const maxScrolls = 100; // You can adjust this based on your needs
         let scrollCount = 0;
-        while (scrollCount < maxScrolls) {
+        let retries = 5;
+        
+        while (scrollCount < maxScrolls && retries > 0) {
             scrollCount += 1;
             await page.evaluate(() => {
                 document.querySelector(".m6QErb.DxyBCb.kA9KIf.dS8AEf.XiKgde.ecceSd").scrollTo(0, document.querySelector(".m6QErb.DxyBCb.kA9KIf.dS8AEf.XiKgde.ecceSd").scrollHeight);
             });
 
-            await new Promise(resolve => setTimeout(resolve, 30000));
+            // Wait for new elements to load
+            await new Promise(resolve => setTimeout(resolve, 30000)); 
 
             const newHeight = await page.evaluate('document.querySelector(".m6QErb.DxyBCb.kA9KIf.dS8AEf.XiKgde.ecceSd").scrollHeight');
             if (newHeight === prevHeight) {
-                break;
+                retries -= 1; 
+            } else {
+                retries = 5; 
             }
             prevHeight = newHeight;
 
