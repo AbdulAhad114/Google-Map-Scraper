@@ -7,8 +7,7 @@ This project scrapes business information from Google Maps based on a search que
 - [Usage](#usage)
 - [Saving Data](#saving-data)
 - [Dependencies](#dependencies)
-- [Contributing](#contributions)
-- [License](#license)
+- [Contributions](#contributions)
 
 ## Installation
 
