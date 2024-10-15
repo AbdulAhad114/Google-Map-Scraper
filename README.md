@@ -36,7 +36,7 @@ This project scrapes business information from Google Maps based on a search que
     const searchQuery = "restaurants in San Francisco";
     ```
 3. **Manual Scrolling:**
-    When the page loads, you will need to manually scroll to the bottom to load more results. This ensures you get the maximum number of business URLs.
+    ```When the page loads, you will need to manually scroll to the bottom to load more results. This ensures you get the maximum number of business URLs.```
 
 ## Saving Data
 The scraped data is saved into a CSV file named scraped_data.csv in the following format:
