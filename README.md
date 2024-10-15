@@ -14,8 +14,8 @@ This project scrapes business information from Google Maps based on a search que
 
 1. **Clone the repository:**
     ```sh
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone https://github.com/AbdulAhad114/Google-Map-Scraper.git
+    cd Google-Map-Scraper
     ```
 
 2. **Install dependencies:**
@@ -35,6 +35,8 @@ This project scrapes business information from Google Maps based on a search que
     ```javascript
     const searchQuery = "restaurants in San Francisco";
     ```
+3. **Manual Scrolling:**
+    When the page loads, you will need to manually scroll to the bottom to load more results. This ensures you get the maximum number of business URLs.
 
 ## Saving Data
 The scraped data is saved into a CSV file named scraped_data.csv in the following format:
