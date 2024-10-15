@@ -36,7 +36,7 @@ This project scrapes business information from Google Maps based on a search que
     const searchQuery = "restaurants in San Francisco";
     ```
 3. **Manual Scrolling:**
-    ```sh
+    ```
    When the page loads, you will need to manually scroll to the bottom to load more results. This ensures you get the maximum number of business URLs.
     ```
 
