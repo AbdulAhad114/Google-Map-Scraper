@@ -50,7 +50,7 @@ The scraped data is saved into a CSV file named scraped_data.csv in the followin
 ## Dependencies
 
   **Install the dependencies:**
-    ```sh
+    ```
     npm install puppeteer
     ```
 
